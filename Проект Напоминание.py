@@ -7,9 +7,11 @@ import pygame
 
 t = 0
 music = False
+text = ' '
 
 def set():
     global t
+    global text
     rem = sd.askstring('Время напоминания',
                        'Введите время напоминания ЧЧ:ММ в формате 24 часа')
     if rem:
@@ -34,6 +36,7 @@ def check():
         now = time.time()
         if now >= t:
             play_snd()
+            popup_window()
             t = 0
     window.after(10000, check)
 
@@ -50,6 +53,18 @@ def stop_music():
         pygame.mixer.music.stop()
         music = False
     label.config(text = 'Установить новое напоминание')
+
+def popup_window():
+    global text
+    window = Tk()
+    window.title('Напоминание')
+    w = window.winfo_screenwidth()
+    h = window.winfo_screenheight()
+    w_2 = w // 2
+    h_2 = h // 2
+    window.geometry(f'500x300+{w_2 - 250}+{h_2 - 150}')
+    label = Label(window, text = f'Напоминание:\n"{text}"', font = ('Arial', 24))
+    label.pack(pady = 30)
 
 window = Tk()
 window.title('Напоминание')
