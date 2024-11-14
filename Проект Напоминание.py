@@ -72,7 +72,6 @@ label = Label(text = 'Установите напоминание', font = ('Ari
 label.pack(pady = 10)
 set_button = Button(text = 'Установить напоминание', command = set)
 set_button.pack(pady = 10)
-
 stop_button = Button(text = 'Остановить музыку', command = stop_music)
 stop_button.pack(pady = 10)
 
